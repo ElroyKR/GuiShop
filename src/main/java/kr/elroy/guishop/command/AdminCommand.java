@@ -165,15 +165,15 @@ public class AdminCommand extends SimpleCommand {
     @Override
     protected List<String> tabComplete() {
         if (args.length == 1) {
-            return Arrays.asList("목록", "생성", "제거", "NPC", "아이템목록", "아이템등록", "아이템삭제");
+            return completeLastWord(Arrays.asList("목록", "생성", "제거", "NPC", "아이템목록", "아이템등록", "아이템삭제"));
         }
 
         final List<String> argument1 = Arrays.asList("제거", "NPC", "아이템목록", "아이템등록", "아이템삭제");
 
         if (args.length == 2 && argument1.contains(args[0])) {
-            return shopManager.getShopNames();
+            return completeLastWord(shopManager.getShopNames());
         }
 
-        return null;
+        return NO_COMPLETE;
     }
 }
