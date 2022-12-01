@@ -8,6 +8,7 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.menu.MenuPagged;
+import org.mineacademy.fo.menu.button.Button;
 import org.mineacademy.fo.menu.model.ItemCreator;
 import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.model.Replacer;
@@ -18,7 +19,26 @@ public class ShopUserMenu extends MenuPagged<ShopItem> {
     public ShopUserMenu(Shop shop) {
         super(shop.getShopItems());
         setSize(54);
+
+        Button.setInfoButtonMaterial(Settings.Menu.INFO_ITEM_MATERIAL);
+        Button.setInfoButtonTitle(Settings.Menu.INFO_ITEM_NAME);
         this.setTitle("&0&l" + shop.getShopName());
+    }
+
+    @Override
+    protected boolean addInfoButton() {
+        return Settings.Menu.INFO_ITEM_ENABLED;
+    }
+
+    @Override
+    protected int getInfoButtonPosition() {
+        return 49;
+    }
+
+    @Override
+    protected String[] getInfo() {
+        int balance = (int) HookManager.getBalance(getViewer());
+        return Replacer.replaceArray(Settings.Menu.INFO_ITEM_LORE, "balance", balance).toArray(new String[]{});
     }
 
     @Override

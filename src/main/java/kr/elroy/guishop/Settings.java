@@ -1,5 +1,6 @@
 package kr.elroy.guishop;
 
+import org.mineacademy.fo.remain.CompMaterial;
 import org.mineacademy.fo.settings.SimpleSettings;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 public class Settings extends SimpleSettings {
     @Override
     protected int getConfigVersion() {
-        return 1;
+        return 2;
     }
 
     public final static class Messages {
@@ -27,10 +28,18 @@ public class Settings extends SimpleSettings {
 
     public final static class Menu {
         public static List<String> PRODUCT_ITEM_LORE;
+        public static Boolean INFO_ITEM_ENABLED;
+        public static String INFO_ITEM_NAME;
+        public static List<String> INFO_ITEM_LORE;
+        public static CompMaterial INFO_ITEM_MATERIAL;
 
         private static void init() {
             setPathPrefix("Menu");
             PRODUCT_ITEM_LORE = getList("ProductItem_Lore", String.class);
+            INFO_ITEM_ENABLED = getBoolean("InfoItem.Enable");
+            INFO_ITEM_MATERIAL = getMaterial("InfoItem.Material");
+            INFO_ITEM_NAME = getString("InfoItem.Name");
+            INFO_ITEM_LORE = getList("InfoItem.Lore", String.class);
         }
     }
 }

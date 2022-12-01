@@ -1,5 +1,5 @@
 # Version 값 임의변경 금지
-Version: 1
+Version: 2
 
 Messages:
   Buy_Success: "&a성공적으로 구매하였습니다."
@@ -14,3 +14,9 @@ Menu:
     - ""
     - "&e좌클릭: &f1개 구매 | &e쉬프트 + 좌클릭: &f한 세트 구매"
     - "&e우클릭: &f1개 판매 | &e쉬프트 + 우클릭: &f모두 판매"
+  InfoItem:
+    Enable: true
+    Material: EMERALD
+    Name: "&6&l현재 보유하고 있는 돈"
+    Lore:
+      - "&f&l{balance}원"
